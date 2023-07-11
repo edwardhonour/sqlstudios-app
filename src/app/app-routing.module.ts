@@ -8,18 +8,13 @@ import { UserEnrollComponent } from './auth/user-enroll/user-enroll.component';
 import { UserLogoutComponent } from './auth/user-logout/user-logout.component';
 import { DataResolver, MenuResolver, PingResolver, UserResolver } from './data.resolver';
 import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashboard.component';
-import { DocWorkspaceDashboardComponent } from './features/doc-workspace-dashboard/doc-workspace-dashboard.component';
-import { DocWorkspaceFormComponent } from './features/doc-workspace-form/doc-workspace-form.component';
 import { DocWorkspaceListComponent } from './features/doc-workspace-list/doc-workspace-list.component';
 import { DocWorkspaceTableComponent } from './features/doc-workspace-table/doc-workspace-table.component';
-import { NuaUserTableComponent } from './features/nua-user-table/nua-user-table.component';
-import { DocDocumentTableComponent } from './pages/doc-document-table/doc-document-table.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { ProjectDashboardComponent } from './pages/project-dashboard/project-dashboard.component';
 import { TestPageComponent } from './pages/test-page/test-page.component';
 import { DocumentDashboardComponent } from './features/document-dashboard/document-dashboard.component';
 import { AdminHomeComponent } from './features/admin-home/admin-home.component';
-import { OrgListComponent } from './admin/org-list/org-list.component';
 import { OrgDashboardComponent } from './admin/org-dashboard/org-dashboard.component';
 import { SettingsComponent } from './auth/settings/settings.component';
 import { VerifyDocComponent } from './features/verify-doc/verify-doc.component';
@@ -37,13 +32,19 @@ import { AssessmentListComponent } from './pages/assessment-list/assessment-list
 import { AddAssessmentComponent } from './pages/add-assessment/add-assessment.component';
 import { ThreatCatListComponent } from './admin/threat-cat-list/threat-cat-list.component';
 import { ThreatCatFormComponent } from './admin/threat-cat-form/threat-cat-form.component';
+import { AudioListComponent } from './pages/audio-list/audio-list.component';
+import { VideoListComponent } from './pages/video-list/video-list.component';
+import { AudioClipFormComponent } from './pages/audio-clip-form/audio-clip-form.component';
 
 const routes: Routes = [
   { path: '', component: NewSigninComponent },
   { path: 'workspace-table', component: DocWorkspaceTableComponent },
   { path: 'workspaces', component: DocWorkspaceListComponent },
   { path: 'assessments', component: AssessmentListComponent, resolve: { data: DataResolver }},
-  { path: 'add-assessment', component: AddAssessmentComponent, resolve: { data: DataResolver }},
+  { path: 'audio', component: AudioListComponent, resolve: { data: DataResolver }},
+  { path: 'video', component: VideoListComponent, resolve: { data: DataResolver }},
+  { path: 'projects', component: VideoListComponent, resolve: { data: DataResolver }},
+  { path: 'add-audio-clip', component: AudioClipFormComponent, resolve: { data: DataResolver }},
   { path: 'threat-cat-list', component: ThreatCatListComponent, resolve: { data: DataResolver }},
   { path: 'threat-cat-form', component: ThreatCatFormComponent, resolve: { data: DataResolver }},
   { path: 'threat-cat-form/:id', component: ThreatCatFormComponent, resolve: { data: DataResolver }},
