@@ -32,7 +32,7 @@
                                                 <label for="exampleFormControlInput1" class="form-label">Voice Name</label>
                                                 <select [(ngModel)]="data.formData['voice_id']" class="form-control" name="voice_id" id="exampleFormControlInput1" placeholder="">
                                                     <option value="0">-- Select a Voice --</option>
-                                                    <option value="0">Ellie</option>
+                                                    <option *ngFor="let m of data.voices" value="{{ m.id }}">{{ m.voice_name }}</option>
                                                 </select>
                                               </div>                                              
                                               <div class="mb-3">
@@ -73,7 +73,7 @@
                                 <td>{{ m.voice_name }}</td>
                                 <td>{{ m.script }}</td>
                                 <td>{{ m.status }}</td>
-                                <td><audio *ngIf="m.file_name!=''" controls><source src="https://sqlstudios.com/{{ m.file_name }}" type="audio/wav"></audio></td>
+                                <td><audio *ngIf="m.file_name!=''" controls><source src="https://sqlstudios.com/audio/{{ m.file_name }}" type="audio/wav"></audio></td>
                             </tr>
                         </tbody>
                     </table>                                  

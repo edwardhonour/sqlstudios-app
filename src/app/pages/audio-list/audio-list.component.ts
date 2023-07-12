@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil, Subscription, Observable, timer } from 'rxjs';
 import { FormsModule,  FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -25,7 +25,7 @@ import { SitebarWrapperComponent } from 'src/app/template/sitebar-wrapper/siteba
   templateUrl: './audio-list.component.html',
   styleUrls: ['./audio-list.component.css']
 })
-export class AudioListComponent implements OnInit, OnDestroy
+export class AudioListComponent implements OnInit, OnDestroy, OnChanges
 {
   isScreenSmall: boolean = false;
   term: any;
@@ -39,6 +39,8 @@ export class AudioListComponent implements OnInit, OnDestroy
   isOpen: any = 'N';
   section: any ='N';
   edit: any = 'N';
+  subscription: Subscription = Subscription.EMPTY;
+  everyFiveSeconds: Observable<number> = timer(15000);
 
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -58,10 +60,20 @@ export class AudioListComponent implements OnInit, OnDestroy
     }
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    
+  }
+
   postForm() {
     this._dataService.postForm("post-audio-clip", this.data.formData).subscribe((data:any)=>{
 //        this.data=data;
       location.reload();
+     });
+  }
+
+  getList() {
+    this._dataService.postForm("audio", this.data.formData).subscribe((data:any)=>{
+          this.data=data;
      });
   }
 
